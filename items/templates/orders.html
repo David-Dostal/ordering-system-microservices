@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders</title>
+    <style>
+        .navigation {
+            margin-bottom: 20px;
+        }
+        .navigation a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+        .navigation a:hover {
+            color: #0056b3;
+        }
+
+        .navigation {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        .navigation a:hover {
+            color: #0056b3;
+        }
+
+        .logout-link {
+            margin-left: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+        .order-detail {
+            margin-bottom: 20px;
+        }
+        .order-header {
+            margin-top: 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    {% include 'navigation.html' %}
+
+    <h1>Your Orders</h1>
+    {% if user %}
+        {% if orders %}
+            {% for order in orders %}
+                <div class="order-detail">
+                    <h2 class="order-header">Order ID: {{ order['id'] }} - Date: {{ order['order_date'] }}</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item ID</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order['items'] %}
+                                <tr>
+                                    <td>{{ item['item_id'] }}</td>
+                                    <td>{{ item['quantity'] }}</td>
+                                    <td>${{ item['unit_price'] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <p><strong>Delivery Address:</strong> {{ order['address'] }}</p>
+                    <p><strong>Total Price:</strong> ${{ order['total_price'] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>You have no orders.</p>
+        {% endif %}
+    {% else %}
+        <p>Please <a href="/login">login</a> to view your orders.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;        }
+        h1 {
+            color: #333;
+        }
+        .nav {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;        }
+        .nav a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 10px;
+            padding: 10px 20px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
+        .nav a:hover {
+            background-color: #007bff;
+            color: white;        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if user %}
+        <h1>Welcome, {{ user['name'] }}!</h1>
+        {% else %}
+        <h1>Welcome to the Item Store</h1>
+        {% endif %}
+        <div class="nav">
+        {% if user %}
+            <a href="/items">Show Items</a><br>
+            <a href="/cart/">My Cart</a><br>
+            <a href="/orders">My Orders</a>
+            <a href="/logout">Logout</a><br>
+        {% else %}
+            <a href="/login">Login</a><br>
+        {% endif %}
+    </div>
+</body>
+</html>

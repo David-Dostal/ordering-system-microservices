@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .admin-nav {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .admin-nav a {
+            text-decoration: none;
+            color: #007bff;
+            margin: 10px;
+            padding: 10px 20px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
+        .admin-nav a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <div class="admin-nav">
+            {% if user %}
+            <a href="/admin/new-item">Add New Item</a>
+            <a href="/admin/items">Manage Items</a>
+            <a href="/admin/orders">View Orders</a>
+            <a href="/logout">Logout</a>
+            {% else %}
+            <a href="/login">Login</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

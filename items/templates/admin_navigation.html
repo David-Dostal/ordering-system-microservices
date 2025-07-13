@@ -1,0 +1,14 @@
+<div class="navigation">
+    <a href="/">Mainpage</a>
+    <a href="/admin/new-item">Add New Item</a>
+    <a href="/admin/items">Manage Items</a>
+    <a href="/admin/orders">View Orders</a>
+
+    {% if user %}
+        <div class="logout-link">
+            <a href="/logout">Logout</a>
+        </div>
+    {% else %}
+        <a href="/login">Login</a>
+    {% endif %}
+</div>

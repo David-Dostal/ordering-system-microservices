@@ -1,0 +1,103 @@
+@host = http://localhost:8000
+@item_name = cibule
+@item_category = kudla
+
+@itemid = 65b6b6d08d930e63e4300260
+
+### List of items
+GET {{host}}/items
+Accept: application/json
+
+### Get item by category
+GET {{host}}/items/category/{{item_category}}
+Accept: application/json
+
+### Insert item 65b281b801569c558f1783b0
+POST {{host}}/new-item
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "cucumber",
+    "price_per_unit": 5.10,
+    "count" : 50,
+    "reserved" : 0,
+    "description": "watery vegetable",
+    "category": "vegetable",
+    "available": true
+}
+
+### Insert item 65b281a101569c558f1783af
+POST {{host}}/new-item
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "bread",
+    "price_per_unit": 10.20,
+    "count" : 70,
+    "reserved" : 0,
+    "description": "fresh",
+    "category": "bread",
+    "available": true
+}
+
+### Insert item 65b281a101569c558f1783af
+POST {{host}}/new-item
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "bread",
+    "price_per_unit": 10.20,
+    "count" : 70,
+    "reserved" : 0,
+    "description": "fresh",
+    "category": "bread",
+    "available": true
+}
+
+### Insert item 65b281a101569c558f1783af
+POST {{host}}/new-item
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "test",
+    "price_per_unit": 100.20,
+    "count" : 0,
+    "reserved" : 0,
+    "description": "test",
+    "category": "test",
+    "available": false
+}
+
+### Update item
+PUT {{host}}/item/{{itemid}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name": "Updated Name",
+    "price_per_unit": 60.00,
+    "reserved" : 10,
+    "count": 30,
+    "description": "Updated description",
+    "category": "Updated category",
+    "available": false
+}
+
+### Delete item
+DELETE http://localhost:8000/item/65b6b6248d930e63e430025f
+Accept: application/json
+
+### Insert items into cart
+POST http://localhost:8000/cart/item/add/user123/65b2bfb2b7423fe94b502042/10
+Accept: application/json
+
+### Empty cart
+
+DELETE http://localhost:8000/cart/user123
+Accept: application/json
+
+

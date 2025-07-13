@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Add New Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .item {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .item.not-available {
+            background: #eee;
+            color: #999;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .item p {
+            margin: 5px 0;
+        }
+        .quantity-label {
+            margin-right: 10px;
+        }
+        .navigation {
+            margin-bottom: 20px;
+        }
+        .navigation a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+        .navigation a:hover {
+            color: #0056b3;
+        }
+
+        .navigation {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+        .navigation a:hover {
+            color: #0056b3;
+        }
+
+        .logout-link {
+            margin-left: auto;
+        }
+        .add-item-form {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 5px;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-actions {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    {% include 'admin_navigation.html' %}
+
+    {% if user %}
+        <h1>Add New Item</h1>
+        <form action="/admin/new-item" method="post" class="add-item-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="price_per_unit">Price per unit:</label>
+                <input type="number" id="price_per_unit" name="price_per_unit" required>
+            </div>
+            <div class="form-group">
+                <label for="count">Count:</label>
+                <input type="number" id="count" name="count" required>
+            </div>
+            <div class="form-group">
+                <label for="reserved">Reserved:</label>
+                <input type="number" id="reserved" name="reserved" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" required>
+            </div>
+            <div class="form-group">
+                <label for="available">Available:</label>
+                <input type="checkbox" id="available" name="available">
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="button">Add Item</button>
+            </div>
+        </form>
+    {% endif %}
+</body>
+</html>
